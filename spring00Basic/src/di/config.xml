@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<daos>
+	<dao id="my">di.MyUserDao</dao>
+	<dao id="or">di.OraUserDao</dao>
+</daos>
