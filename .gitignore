@@ -38,3 +38,5 @@ target/
 ehthumbs.db
 Icon?
 Thumbs.db
+/.metadata/
+/.recommenders/
