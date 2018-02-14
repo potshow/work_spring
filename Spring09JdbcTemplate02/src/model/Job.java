@@ -10,7 +10,6 @@ public class Job {
 	public Job() {}
 
 	public Job(String jobId, String jobTitle, Integer minSalary, Integer maxSalary) {
-		super();
 		this.jobId = jobId;
 		this.jobTitle = jobTitle;
 		this.minSalary = minSalary;
@@ -63,7 +62,4 @@ public class Job {
 		builder.append("]");
 		return builder.toString();
 	}
-	
-	
-
 }
