@@ -2,7 +2,7 @@
 <!DOCTYPE configuration
   PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
-  
+  <!-- alias << 별칭 짓기. 짧게 부를 수 있도록...  -->
   <configuration>
   	<typeAliases>
   		<typeAlias type="com.koitt.mvc.model.Employee" alias="Emp"/>
