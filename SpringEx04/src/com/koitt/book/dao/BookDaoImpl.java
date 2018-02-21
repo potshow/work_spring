@@ -31,6 +31,7 @@ public class BookDaoImpl implements BookDao{
 					book.getDescription());
 			
 		} catch (Exception e) {
+			System.out.println(e.getMessage());
 			throw new BookException(e.getMessage());
 		}
 	}
@@ -43,6 +44,7 @@ public class BookDaoImpl implements BookDao{
 			String sql = "SELECT * FROM book WHERE isbn = ?";
 			book = template.queryForObject(sql, new BeanPropertyRowMapper<Book>(Book.class), isbn);
 		} catch (Exception e) {
+			System.out.println(e.getMessage());
 			throw new BookException(e.getMessage());
 		}
 		return book;
@@ -56,6 +58,7 @@ public class BookDaoImpl implements BookDao{
 			list = template.query(sql, new BeanPropertyRowMapper<Book>(Book.class));
 			
 		} catch (Exception e) {
+			System.out.println(e.getMessage());
 			throw new BookException(e.getMessage());
 		}
 		return list;
@@ -81,6 +84,8 @@ public class BookDaoImpl implements BookDao{
 				book.getDescription(),
 				book.getIsbn());
 		} catch (Exception e) {
+			// 오류메세지 콘솔창에 띄어주는거 ↓
+			System.out.println(e.getMessage());
 			throw new BookException(e.getMessage());
 		}
 		
@@ -92,6 +97,7 @@ public class BookDaoImpl implements BookDao{
 			String sql = "DELETE FROM book WHERE isbn = ?";
 			template.update(sql, isbn);
 		} catch (Exception e) {
+			System.out.println(e.getMessage());
 			throw new BookException(e.getMessage());
 		}
 		

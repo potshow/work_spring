@@ -9,19 +9,19 @@
 	<form action="book-add.do" method="post">
 		
 		<div>
-			<label>책 제목<input type="text" name="title"></label>
+			<label>책 제목  <input type="text" name="title"></label>
 		</div>
 		<div>
-			<label>저자<input type="text" name="author"></label>
+			<label>저자     <input type="text" name="author"></label>
 		</div>
 		<div>
-			<label>출판사<input type="text" name="publisher"></label>
+			<label>출판사   <input type="text" name="publisher"></label>
 		</div>
 		<div>
-			<label>가격<input type="text" name="price"></label>
+			<label>가격     <input type="text" name="price"></label>
 		</div>
 		<div>
-			<label>책 설명<textarea name="description"></textarea></label>
+			<label>책 설명  <textarea name="description"></textarea></label>
 		</div>
 		
 		<input type ="submit" value="책 등록">
