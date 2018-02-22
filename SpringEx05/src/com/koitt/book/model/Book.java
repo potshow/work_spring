@@ -5,13 +5,13 @@ import java.io.Serializable;
 // Java Bean
 public class Book implements Serializable {
     private Integer isbn;		// 책 번호 (자동증가)
-    private Integer userNo;		// 사용자 번호
     private String title;		// 책 제목
     private String author;		// 저자
     private String publisher;	// 출판사
     private Integer price;		// 가격
     private String description;	// 책 설명
-    private  String attachment;
+    private String attachment;
+    private Users users;		// 유저
     
     // 1. 기본 생성자
     public Book() {}
@@ -19,13 +19,13 @@ public class Book implements Serializable {
     // 2. 생성자
 	public Book(Integer isbn, Integer userNo, String title, String author, String publisher, Integer price, String description, String attachment) {
 		this.isbn = isbn;
-		this.userNo = userNo;
 		this.title = title;
 		this.author = author;
 		this.publisher = publisher;
 		this.price = price;
 		this.description = description;
 		this.attachment = attachment;
+		this.users = users;
 	}
 
 	// 3. getter, setter
@@ -85,12 +85,14 @@ public class Book implements Serializable {
 		this.attachment = attachment;
 	}
 	
-	public Integer getUserNo() {
-		return userNo;
+
+
+	public Users getUsers() {
+		return users;
 	}
 
-	public void setUserNo(Integer userNo) {
-		this.userNo = userNo;
+	public void setUsers(Users users) {
+		this.users = users;
 	}
 
 	// 4. equals, hashCode 작성
@@ -99,7 +101,7 @@ public class Book implements Serializable {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((author == null) ? 0 : author.hashCode());
-		result = prime * result + ((userNo == null) ? 0 : userNo.hashCode());
+		result = prime * result + ((users == null) ? 0 : users.hashCode());
 		result = prime * result + ((description == null) ? 0 : description.hashCode());
 		result = prime * result + ((isbn == null) ? 0 : isbn.hashCode());
 		result = prime * result + ((price == null) ? 0 : price.hashCode());
@@ -131,8 +133,8 @@ public class Book implements Serializable {
 		StringBuilder builder = new StringBuilder();
 		builder.append("Book [isbn=");
 		builder.append(isbn);
-		builder.append(", userNo=");
-		builder.append(userNo);
+		builder.append(", users=");
+		builder.append(users);
 		builder.append(", title=");
 		builder.append(title);
 		builder.append(", author=");

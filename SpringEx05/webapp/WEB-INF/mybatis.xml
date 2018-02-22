@@ -12,6 +12,6 @@
   
   	<typeAliases>
   		<typeAlias type="com.koitt.book.model.Book" alias="book"/>
-  		<typeAlias type="com.koitt.book.model.Book" alias="Users"/>
+  		<typeAlias type="com.koitt.book.model.Users" alias="Users"/>
   	</typeAliases>
   </configuration>
