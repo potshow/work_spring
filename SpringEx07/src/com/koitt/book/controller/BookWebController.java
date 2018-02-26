@@ -25,6 +25,7 @@ import com.koitt.book.service.FileService;
 import com.koitt.book.service.UsersService;
 
 @Controller
+@RequestMapping("/book")
 public class BookWebController {
 
 	@Autowired
@@ -69,6 +70,7 @@ public class BookWebController {
 			}
 
 			imgPath = fileService.getImgPath(request, filename);
+			uploadPath = fileService.getUploadPath(request);
 
 		} catch (BookException e) {
 			model.addAttribute("error", "server");
@@ -92,6 +94,7 @@ public class BookWebController {
 	@RequestMapping(value = "/book-add.do", method = RequestMethod.GET)
 	public String add(Model model) {
 
+		// 사용자 번호 book에 담음.
 		String email = usersService.getPrincipal().getUsername();
 		try {
 
@@ -116,10 +119,12 @@ public class BookWebController {
 			String publisher,
 			Integer price,
 			String description,
+			Integer userNo,
 			@RequestParam("attachment") MultipartFile attachment) {
 
 		Book book = new Book();
 		book.setTitle(title);
+		book.setUserNo(userNo);
 		book.setAuthor(author);
 		book.setPublisher(publisher);
 		book.setPrice(price);

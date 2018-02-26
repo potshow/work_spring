@@ -4,7 +4,10 @@ import java.io.Serializable;
 
 // Java Bean
 public class Book implements Serializable {
+	private static final long serialVersionUID = 1L;
+	
     private Integer isbn;		// 책 번호 (자동증가)
+    private Integer userNo;		// 사용자 번호
     private String title;		// 책 제목
     private String author;		// 저자
     private String publisher;	// 출판사
@@ -19,13 +22,13 @@ public class Book implements Serializable {
     // 2. 생성자
 	public Book(Integer isbn, Integer userNo, String title, String author, String publisher, Integer price, String description, String attachment) {
 		this.isbn = isbn;
+		this.userNo = userNo;
 		this.title = title;
 		this.author = author;
 		this.publisher = publisher;
 		this.price = price;
 		this.description = description;
 		this.attachment = attachment;
-		this.users = users;
 	}
 
 	// 3. getter, setter
@@ -85,14 +88,20 @@ public class Book implements Serializable {
 		this.attachment = attachment;
 	}
 	
-
-
 	public Users getUsers() {
 		return users;
 	}
 
 	public void setUsers(Users users) {
 		this.users = users;
+	}
+	
+	public Integer getUserNo() {
+		return userNo;
+	}
+
+	public void setUserNo(Integer userNo) {
+		this.userNo = userNo;
 	}
 
 	// 4. equals, hashCode 작성
@@ -128,11 +137,15 @@ public class Book implements Serializable {
 		return false;
 	}
 
+	// 5. toString 구현
+	
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
 		builder.append("Book [isbn=");
 		builder.append(isbn);
+		builder.append(", userNo=");
+		builder.append(userNo);
 		builder.append(", users=");
 		builder.append(users);
 		builder.append(", title=");
@@ -151,6 +164,5 @@ public class Book implements Serializable {
 		return builder.toString();
 	}
 
-	// 5. toString 구현
-	
+
 }

@@ -5,7 +5,7 @@
   
   <mapper namespace="com.koitt.book.model.Book">
   	<insert id="insert-book" parameterType="book">
-  		INSERT INTO book (title, users_no, author, publisher, price, description, attachment)
+  		INSERT INTO book (title, user_no, author, publisher, price, description, attachment)
   		VALUES (#{title}, #{userNo}, #{author}, #{publisher}, #{price}, #{description}, #{attachment}) 
   	</insert>
   	
@@ -27,14 +27,14 @@
   		SELECT b.isbn, b.title, b.author, b.user_no, b.publisher, b.price, b.description, b.attachment, 
 			u.email, u.name, u.attachment as "uattachment" 
 		FROM book b, users u 
-		WHERE b.user_no = u.no AND b.isbn = #{isbn} ORDER BY b.isbn DESC;
+		WHERE b.user_no = u.no AND b.isbn = #{isbn} ORDER BY b.isbn DESC
   	</select>
   	
   	<select id="select-all-book" resultMap="bookResultMap">
   		SELECT b.isbn, b.title, b.author, b.user_no, b.publisher, b.price, b.description, b.attachment, 
 			u.email, u.name, u.attachment as "uattachment" 
 		FROM book b, users u 
-		WHERE b.user_no = u.no ORDER BY b.isbn DESC;
+		WHERE b.user_no = u.no ORDER BY b.isbn DESC
   	</select>
   	
   	<update id="update-book" parameterType="book">

@@ -30,6 +30,7 @@ public class UsersServiceImpl implements UsersService {
 	@Autowired
 	private UsersDao usersDao;
 
+	@Autowired
 	private AuthorityDao authorityDao;
 
 	@Autowired

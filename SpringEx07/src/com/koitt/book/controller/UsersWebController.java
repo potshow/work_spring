@@ -31,7 +31,7 @@ public class UsersWebController {
 	private FileService fileService;
 	
 	// 사용자 목록
-	@RequestMapping(value="/users-list.do", method=RequestMethod.GET)
+	@RequestMapping(value="/admin/users-list.do", method=RequestMethod.GET)
 	public String list(Model model, HttpServletRequest req) {
 		List<Users> list = null;
 		
@@ -86,7 +86,7 @@ public class UsersWebController {
 			req.setAttribute("error", "encoding");
 		}
 		
-		return "redirect:index.html";
+		return "redirect:index.do";
 	}
 	
 	// 가입 확인

@@ -61,18 +61,18 @@ INSERT INTO book (user_no, title, author, publisher, price, description, attachm
 
 # 회원 예시 입력
 INSERT INTO users (email, password, name, attachment)
-	VALUES	('admin@naver.com', '1111', '도서 관리자(K)', NULL);
+	VALUES	('admin@naver.com', '$2a$10$MzzmhmOpVRb1VgME/ei37.iXjvxFr8FtzFVlZkIiyndqbtyykQfWy', '도서 관리자(K)', NULL);
 	
 INSERT INTO users (email, password, name, attachment)
-	VALUES	('test1@naver.com', '1111', '유저 고양이 JK씨', NULL);
+	VALUES	('test1@naver.com', '$2a$10$MzzmhmOpVRb1VgME/ei37.iXjvxFr8FtzFVlZkIiyndqbtyykQfWy', '유저 고양이 JK씨', NULL);
 	
 INSERT INTO users (email, password, name, attachment)
-	VALUES	('test2@naver.com', '1111', '유저겸 관리자 백씨', NULL);
+	VALUES	('test2@naver.com', '$2a$10$MzzmhmOpVRb1VgME/ei37.iXjvxFr8FtzFVlZkIiyndqbtyykQfWy', '유저겸 관리자 백씨', NULL);
 	
 # 사용자에게 권한 부여
 INSERT INTO users_authority VALUES (1, 10); 
 INSERT INTO users_authority VALUES (2, 20);
-INSERT INTO users_authority VALUES (3, 10); 
+INSERT INTO users_authority VALUES (4, 10); 
 INSERT INTO users_authority VALUES (3, 20);
 	
 # 1. users_authority 테이블과 authority 테이블을 EQUI JOIN 하는 SQL문

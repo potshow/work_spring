@@ -9,6 +9,10 @@
 	<h1>도서 정보 상세 보기</h1>
 		<dl>
 			<dt>ISBN</dt><dd>${ book.isbn }</dd>
+			
+			<dt>작성자</dt><dd>${ book.users.name } (${ book.users.email })</dd>
+			<dt>작성자 사진</dt><dd><img src="${ uploadPath }/${book.users.attachment}"></dd>
+			
 			<dt>책 제목</dt><dd>${ book.title }</dd>
 			<dt>저자</dt><dd>${ book.author }</dd>
 			<dt>출판사</dt><dd>${ book.publisher }</dd>
