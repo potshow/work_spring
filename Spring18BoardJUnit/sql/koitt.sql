@@ -5,6 +5,8 @@ DROP TABLE users_authority;
 DROP TABLE authority;
 DROP TABLE users;
 
+DELETE FROM users;
+
 CREATE TABLE users (
 	no			INT 		 NOT NULL PRIMARY KEY AUTO_INCREMENT,
 	email		VARCHAR(255) NOT NULL,

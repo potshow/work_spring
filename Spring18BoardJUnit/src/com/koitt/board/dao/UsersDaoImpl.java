@@ -35,13 +35,15 @@ public class UsersDaoImpl implements UsersDao {
 
 	@Override
 	public Users select(Integer no) throws UsersException {
-		
 		Users users = null;
+		
 		try {
-		users = session.selectOne(MAPPER_NS + ".select-users", no);
+			users = session.selectOne(MAPPER_NS + ".select-users", no);
+			
 		} catch (Exception e) {
 			throw new UsersException(e.getMessage());
 		}
+		
 		return users;
 	}
 
@@ -75,7 +77,6 @@ public class UsersDaoImpl implements UsersDao {
 		} catch (Exception e) {
 			throw new UsersException(e.getMessage());
 		}
-		
 	}
 
 	@Override
@@ -100,7 +101,6 @@ public class UsersDaoImpl implements UsersDao {
 		} catch (Exception e) {
 			throw new UsersException(e.getMessage());
 		}
-		
 	}
 
 	@Override
@@ -112,7 +112,57 @@ public class UsersDaoImpl implements UsersDao {
 		} catch (Exception e) {
 			throw new UsersException(e.getMessage());
 		}
+		
 		return lastInsertId;
 	}
 
+	@Override
+	public void deleteAll() throws UsersException {
+		try {
+			session.delete(MAPPER_NS + ".delete-all-users");
+			
+		} catch (Exception e) {
+			throw new UsersException(e.getMessage());
+		}
+	}
+
+	@Override
+	public Integer getCount() throws UsersException {
+		Integer count = null;
+		
+		try {
+			count = session.selectOne(MAPPER_NS + ".count-users");
+			
+		} catch (Exception e) {
+			throw new UsersException(e.getMessage());
+		}
+		
+		return count;
+	}
+
+	@Override
+	public void deleteAllUsersAuthority() throws UsersException {
+		try {
+			session.delete(MAPPER_NS + ".delete-all-users-authority");
+			
+		} catch (Exception e) {
+			throw new UsersException(e.getMessage());
+		}
+	}
+
+	@Override
+	public Integer getCountUsersAuthority() throws UsersException {
+		Integer count = null;
+		
+		try {
+			count = session.selectOne(MAPPER_NS + ".count-users-authority");
+			
+		} catch (Exception e) {
+			throw new UsersException(e.getMessage());
+		}
+		
+		return count;
+	}
 }
+
+

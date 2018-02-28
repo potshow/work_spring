@@ -22,10 +22,21 @@ public interface UsersDao {
 	// 이메일로 사용자의 모든 정보 가져오기
 	public Users selectByEmail(String email) throws UsersException;
 	
-	// users_authority 테이블에 정보를 입력하기 
+	// users_authority 테이블에 정보를 입력하기
 	public void insertAuthority(Users users) throws UsersException;
 	
-	// 최근에 등록한 사용자의 번호를 가져오기
+	// 최근 등록한 사용자의 번호를 가져오기
 	public Integer selectLastInsertId() throws UsersException;
 	
+	// 사용자 전체 삭제
+	public void deleteAll() throws UsersException;
+	
+	// 사용자 수 가져오기
+	public Integer getCount() throws UsersException;
+	
+	// users_authority 테이블 전체 삭제
+	public void deleteAllUsersAuthority() throws UsersException;
+	
+	// users_authority 테이블 행의 수 가져오기
+	public Integer getCountUsersAuthority() throws UsersException;
 }
