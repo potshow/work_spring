@@ -3,9 +3,9 @@
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <!DOCTYPE html>
 <html>
-<head><title>JK HOME</title></head>
+<head><title><spring:message code="greeting"/></title></head>
 <body>
-	<h1>JK HOME</h1>
+	<h1><spring:message code="greeting"/></h1>
 	<a href="<c:url value='/board/board-list.do'/>">글 목록으로 이동</a>
 	<a href="<c:url value='/admin/users-list.do'/>">사용자 목록으로 이동</a>
 	<sec:authorize access="!hasRole('ADMIN') and !hasRole('USER')">
@@ -16,5 +16,8 @@
 		<a href="<c:url value='/users-modify.do'/>">회원정보변경</a>
 		<a href="<c:url value='/logout.do'/>">로그아웃</a>
 	</sec:authorize>
+	<div>현재 언어 : ${ pageContext.response.locale }</div>
+	<a href="index.do?lang=ko"><spring:message code="label.ko"/></a>
+	<a href="index.do?lang=en"><spring:message code="label.en"/></a>
 </body>
 </html>
