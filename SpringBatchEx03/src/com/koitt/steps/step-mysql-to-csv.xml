@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:batch="http://www.springframework.org/schema/batch"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/batch http://www.springframework.org/schema/batch/spring-batch.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.3.xsd">
+
+	<!-- ItemReader 빈 생성 -->
+	<bean id="mySqlItemReader" 
+		class="org.springframework.batch.item.database.JdbcCursorItemReader" scope="step">
+		<property name="dataSource" ref="dataSource" />
+		<property name="sql" value="SELECT * FROM board" />
+		<property name="rowMapper">
+			<bean class="com.koitt.model.BoardRowMapper" />
+		</property>
+	</bean>
+
+	<!-- ItemProcessor 빈 생성 -->
+	<bean id="itemProcessor" class="com.koitt.model.CustomProcessor"/>
+
+	<!-- ItemWriter 빈 생성 -->
+	<bean id="csvItemWriter" class="org.springframework.batch.item.file.FlatFileItemWriter">
+		<property name="resource" value="file:c:/sample/prac03/board.csv" />
+		<property name="appendAllowed" value="false" />
+		<property name="lineAggregator">
+			<bean class="org.springframework.batch.item.file.transform.DelimitedLineAggregator">
+				<property name="delimiter" value="|" />
+				<property name="fieldExtractor">
+					<bean 
+					class="org.springframework.batch.item.file.transform.BeanWrapperFieldExtractor">
+						<property name="names" value="no, title, content, user_no, regdate, attachment" />
+					</bean>
+				</property>
+			</bean>
+		</property>
+	</bean>
+	
+	<!-- Batch Job 빈 생성 -->
+	<batch:job id="mySqlToCsvJob">
+		<batch:step id="step1">
+			<batch:tasklet>
+				<batch:chunk reader="mySqlItemReader" processor="itemProcessor"
+					writer="csvItemWriter" commit-interval="2"/>
+			</batch:tasklet>
+		</batch:step>
+	</batch:job>
+	
+</beans>
