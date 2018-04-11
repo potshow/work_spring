@@ -25,17 +25,18 @@ public class FileServiceImpl implements FileService {
 			// 최상위 경로 밑에 upload 폴더 경로를 가져온다.
 			String path = request.getServletContext().getRealPath(UPLOAD_FOLDER);
 
+			// MultipartFile 객체에서 파일명을 가져온다.
+			String originalName = attachment.getOriginalFilename();
+
+			// upload 폴더가 없다면, upload 폴더 생성
+			File directory = new File(path);
+			if (!directory.exists()) {
+				directory.mkdir();
+			}
+
 			// attachment 객체를 이용하여, 파일을 서버에 전송
 			if (attachment != null && !attachment.isEmpty()) {
 				
-				// MultipartFile 객체에서 파일명을 가져온다.
-				String originalName = attachment.getOriginalFilename();
-
-				// upload 폴더가 없다면, upload 폴더 생성
-				File directory = new File(path);
-				if (!directory.exists()) {
-					directory.mkdir();
-				}
 				/*
 				 * 중복된 파일명을 피하기 위해 시간값을 파일명에 붙이는 작업
 				 */
